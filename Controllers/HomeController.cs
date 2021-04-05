@@ -13,27 +13,24 @@ namespace SportsStore.Controllers
         {
             repository = storeRepository;
         }
-        public ViewResult Index(int ProductPage = 1)
+        public ViewResult Index(string category, int ProductPage = 1)
         {
             return View(new ProductListViewModel
-                {
-                    Products = repository.Products
+            {
+                Products = repository.Products
+                        .Where(p => category == null || p.Category == category)
                         .OrderBy(p => p.ProductId)
-                        .Skip((ProductPage - 1)*PageSize)
+                        .Skip((ProductPage - 1) * PageSize)
                         .Take(PageSize)
                     ,
-                    pagingInfo = new PagingInfo() {
-                        CurrentPage = ProductPage,
-                        ItemsPerPage = PageSize,
-                        TotalProducts = repository.Products.Count() 
+                pagingInfo = new PagingInfo()
+                {
+                    CurrentPage = ProductPage,
+                    ItemsPerPage = PageSize,
+                    TotalProducts = category == null ? repository.Products.Count() : repository.Products.Where(p => p.Category == category).Count()
 
-                }});
+                }
+            });
         }
     }
 }
-
-
-
-
-
-//TODO: Pagination using Tag Helpers

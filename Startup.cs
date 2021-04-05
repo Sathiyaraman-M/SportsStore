@@ -28,6 +28,13 @@ namespace SportsStore
             services.AddControllersWithViews();
             services.AddDbContext<StoreDbContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:SportsStoreConnection"]));
             services.AddScoped<IStoreRepository, EFStoreRepository>();
+            services.AddScoped<IOrderRepository, EFOrderRepository>();
+            services.AddRazorPages();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+            services.AddScoped<Cart>(p => SessionCart.GetCart(p));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,11 +43,18 @@ namespace SportsStore
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseRouting();
+            app.UseSession();
             app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("pagination", "Products/Page{ProductPage}", new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute("catpage", "{category}/Page{ProductPage:int}", new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute("page", "Page{ProductPage:int}", new { Controller = "Home", action = "Index", ProductPage = 1 });
+                endpoints.MapControllerRoute("category", "{category}", new { Controller = "Home", action = "Index", ProductPage = 1 });
+                endpoints.MapControllerRoute("pagination", "Products/Page{ProductPage}", new { Controller = "Home", action = "Index", ProductPage = 1 });
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             });
             SeedData.EnsurePopulated(app);
         }
