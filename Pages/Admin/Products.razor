@@ -55,7 +55,7 @@
         ProductData = await Repository.Products.ToListAsync();
     }
 
-    public async Task DeleteData(Product p){
+    public async Task DeleteProduct(Product p){
         Repository.DeleteProduct(p);
         await UpdateData();
     }

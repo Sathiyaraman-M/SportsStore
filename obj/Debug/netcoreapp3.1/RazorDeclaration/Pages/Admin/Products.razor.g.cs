@@ -63,7 +63,7 @@ using SportsStore.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 43 "D:\ASP.NET Core MVC 3\SportsSln\SportsStore\Pages\Admin\Products.razor"
+#line 44 "D:\ASP.NET Core MVC 3\SportsSln\SportsStore\Pages\Admin\Products.razor"
  
     public IStoreRepository Repository => Service;
     public IEnumerable<Product> ProductData { get; set; }
@@ -76,6 +76,11 @@ using SportsStore.Models;
     public async Task UpdateData()
     {
         ProductData = await Repository.Products.ToListAsync();
+    }
+
+    public async Task DeleteProduct(Product p){
+        Repository.DeleteProduct(p);
+        await UpdateData();
     }
 
     public string GetDetailsUrl(long Id) => $"/admin/products/details/{Id}";
