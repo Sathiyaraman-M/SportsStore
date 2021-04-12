@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace SportsStore.Models
 {
     public class Product
-    {        
+    {
         public long ProductId { get; set; }
 
         [Required(ErrorMessage = "Please enter a Product Name")]
@@ -13,11 +13,14 @@ namespace SportsStore.Models
         public string Description { get; set; }
 
         [Required]
-        [Range(0.01,double.MaxValue,ErrorMessage = "Please enter a positive price")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Please enter a positive price")]
         [Column(TypeName = "decimal(8,2)")]
         public decimal Price { get; set; }
 
         [Required(ErrorMessage = "Please specify a category")]
         public string Category { get; set; }
+
+        [Required(ErrorMessage = "Please enter the stock quantity available")]
+        public int StockQuantity { get; set; }
     }
 }

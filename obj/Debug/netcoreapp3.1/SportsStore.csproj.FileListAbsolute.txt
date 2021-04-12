@@ -114,3 +114,4 @@ D:\ASP.NET Core MVC 3\SportsSln\SportsStore\obj\Debug\netcoreapp3.1\Razor\Pages\
 D:\ASP.NET Core MVC 3\SportsSln\SportsStore\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 D:\ASP.NET Core MVC 3\SportsSln\SportsStore\bin\Debug\netcoreapp3.1\appsettings.Production.json
 D:\ASP.NET Core MVC 3\SportsSln\SportsStore\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+D:\ASP.NET Core MVC 3\SportsSln\SportsStore\obj\Debug\netcoreapp3.1\Razor\Pages\OrderFailed.cshtml.g.cs

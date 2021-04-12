@@ -1,6 +1,6 @@
 @model Cart
 
-<div class="">
+<div class="p-1">
     @if(Model.Lines.Count() > 0) {
         <small class="navbar-text">
             <b>Your Cart: </b>
@@ -8,7 +8,8 @@
             @Model.ComputeTotalValues().ToString("c")
         </small>
     }
-    <a class="btn btn-sm btn-secondary navbar-btn" asp-page="/Cart" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
-        <i class="fa fa-shopping-cart"></i>
+    <a class="btn btn-sm btn-outline-light navbar-btn" asp-page="/Cart" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
+        <i class="fa fa-shopping-cart"></i> Your Cart
     </a>
+    <a href="/admin" class="btn btn-sm btn-outline-light navbar-btn">Administrator Login</a>
 </div>

@@ -62,7 +62,7 @@ using SportsStore.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "D:\ASP.NET Core MVC 3\SportsSln\SportsStore\Pages\Admin\Details.razor"
+#line 37 "D:\ASP.NET Core MVC 3\SportsSln\SportsStore\Pages\Admin\Details.razor"
  
     [Inject]
     public IStoreRepository Repository { get; set; }

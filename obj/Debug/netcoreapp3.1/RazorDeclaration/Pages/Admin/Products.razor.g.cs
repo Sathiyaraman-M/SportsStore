@@ -63,7 +63,7 @@ using SportsStore.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "D:\ASP.NET Core MVC 3\SportsSln\SportsStore\Pages\Admin\Products.razor"
+#line 46 "D:\ASP.NET Core MVC 3\SportsSln\SportsStore\Pages\Admin\Products.razor"
  
     public IStoreRepository Repository => Service;
     public IEnumerable<Product> ProductData { get; set; }

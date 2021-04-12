@@ -60,6 +60,20 @@ using SportsStore.Models;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 45 "D:\ASP.NET Core MVC 3\SportsSln\SportsStore\Pages\Admin\AdminLayout.razor"
+       
+    bool collapseNavMenu = true;
+    string baseMenuClass = "navbar-collapse d-sm-inline-flex flex-sm-row-reverse";
+    string NavMenuCssClass => baseMenuClass + (collapseNavMenu ? " collapse" : "");
+    void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

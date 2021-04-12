@@ -30,6 +30,9 @@ namespace SportsStore.Models
 
         [Required(ErrorMessage = "Please enter a country name")]
         public string Country { get; set; }
+        
+        [Required(ErrorMessage = "Please enter your Phone Number")]
+        public string PhoneNumber { get;set;}    
 
         public bool GiftWrap { get; set; }
 

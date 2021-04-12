@@ -32,5 +32,10 @@ namespace SportsStore.Controllers
                 }
             });
         }
+
+        public IActionResult RedirectToCart()
+        {
+            return RedirectToPage("/Cart");
+        }
     }
 }

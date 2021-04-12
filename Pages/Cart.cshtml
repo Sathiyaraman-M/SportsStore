@@ -19,12 +19,12 @@
                 <td>@Line.Quantity</td>
                 <td class="text-right">@Line.Product.Price.ToString("c")</td>
                 <td class="text-right">@((Line.Product.Price * Line.Quantity).ToString("c"))</td>
-                <td class="text-center">
-                    <form asp-page-handler="Remove" method="POST">
+                <td class="text-center row">
+                        <form asp-page-handler="Remove" method="POST">
                         <input type="hidden" name="ProductId" value="@Line.Product.ProductId" />
                         <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
                         <button type="submit" class="btn btn-sm btn-danger" >Remove</button>
-                    </form>
+                    </form>                    
                 </td>
             </tr>
         }
@@ -43,3 +43,16 @@
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
     <a class="btn btn-primary" asp-action="Checkout" asp-controller="Order">Checkout</a>
 </div>
+
+@functions
+{
+    void AddQuantity(CartLine cartLine)
+    {
+        cartLine.Quantity += 1;        
+    }
+
+    void ReduceQuantity(CartLine cartLine)
+    {
+        cartLine.Quantity -= 1;
+    }
+}
