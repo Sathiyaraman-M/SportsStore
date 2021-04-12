@@ -1,0 +1,71 @@
+@model Order
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/lib/twitter-bootstrap/css/bootstrap.min.css" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Place your Order - SportsStore</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark border-bottom box-shadow mb-3 navbar-expand-sm navbar-toggleable-sm">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-controller="Home" asp-action="Index">SPORTS STORE</a>
+                <div style="float:right">
+                    <vc:cart-summary />
+                </div>
+            </div>
+        </nav>
+        <div class="container body-content">
+            <h2>Checkout Now</h2>
+            <p>Please enter your Details, and we'll ship your goods right away!</p>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <form asp-action="Checkout" method="POST">
+                <h3>Ship to</h3>
+                <div class="row">
+                    <div class="form-group col-8">
+                        <label>Name: </label><input asp-for="Name" class="form-control" />
+                    </div>
+                    <div class="form-group col-4">
+                        <label>Phone Number:</label><input asp-for="PhoneNumber" class="form-control" />
+                    </div>
+                </div>
+                <h3>Address</h3>
+                <div class="form-group">
+                    <label>Line 1: </label><input asp-for="Line1" class="form-control" />        
+                </div>
+                <div class="form-group">
+                    <label>Line 2: </label><input asp-for="Line2" class="form-control" />        
+                </div>
+                <div class="form-group">
+                    <label>Line 3: </label><input asp-for="Line3" class="form-control" />        
+                </div>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <label>City: </label><input asp-for="City" class="form-control" />        
+                    </div>
+                    <div class="form-group col-3">
+                        <label>State: </label><input asp-for="State" class="form-control" />
+                    </div>
+                    <div class="form-group col-3">
+                        <label>Zip: </label><input asp-for="Zip" class="form-control" />
+                    </div>
+                    <div class="form-group col-3">
+                        <label>Country: </label><input asp-for="Country" class="form-control" />            
+                    </div>
+                </div>
+                <h3>Options</h3>
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="GiftWrap" /> Gift wrap these items
+                    </label>
+                </div>
+                <div class="text-center">
+                    <input class="btn btn-primary" type="submit" value="Complete Order"/>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
